@@ -14,14 +14,14 @@ const Hero = () => {
         action="/search"
         className="flex items-center border border-gray-300 rounded-lg overflow-hidden mt-8"
       >
-        <div className="p-2">
+        <button className="p-2">
           <MdOutlineSearch className="text-gray-500" />
-        </div>
+        </button>
         <input
           type="search"
           name="query"
           id="search"
-          className="w-full py-2 px-3 text-gray-700 focus:outline-none"
+          className="w-full py-2 px-3 text-gray-700 focus:outline-none border-none"
           placeholder="Search for a recipe..."
           required=""
         />

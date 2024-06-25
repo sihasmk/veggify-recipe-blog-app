@@ -3,6 +3,7 @@ import App from "../App";
 import Home from "../pages/home/Home";
 import ErrorPage from "../components/ErrorPage";
 import CategoryPage from "../components/CategoryPage";
+import SearchResults from "../pages/SearchResults";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/categories/:category",
         element: <CategoryPage />,
+      },
+      {
+        path: "/search",
+        element: <SearchResults />,
       },
     ],
   },

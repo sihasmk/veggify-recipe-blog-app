@@ -46,42 +46,41 @@ const moreSchema = new Schema({
   },
 });
 
-const itemSchema = new Schema({
-  menuId: {
-    type: Number,
-    required: true,
+const ItemSchema = new Schema(
+  {
+    menuId: {
+      type: Number,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    thumbnail_img: {
+      type: String,
+      required: true,
+    },
+    instructions: {
+      type: String,
+      required: true,
+    },
+    tags: [String],
+    ingredients: {
+      type: [ingredientSchema],
+      required: true,
+    },
+    comments: {
+      type: [commentSchema],
+      required: true,
+    },
+    more: {
+      type: moreSchema,
+      required: true,
+    },
   },
-  name: {
-    type: String,
-    required: true,
-  },
-  thumbnail_img: {
-    type: String,
-    required: true,
-  },
-  category: {
-    type: String,
-    required: true,
-  },
-  instructions: {
-    type: String,
-    required: true,
-  },
-  tags: [String],
-  ingredients: {
-    type: [ingredientSchema],
-    required: true,
-  },
-  comments: {
-    type: [commentSchema],
-    required: true,
-  },
-  more: {
-    type: moreSchema,
-    required: true,
-  },
-});
+  { collection: "Items" }
+);
 
-const Item = mongoose.model("Item", itemSchema);
+const Item = mongoose.model("Item", ItemSchema);
 
 module.exports = Item;
