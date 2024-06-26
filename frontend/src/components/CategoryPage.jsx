@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-// Flowbite React Components
-import { Card } from "flowbite-react";
+import Card from "./Card";
 
 import CategoryWrapper from "./CategoryWrapper";
 import axios from "axios";
@@ -10,6 +9,7 @@ import axios from "axios";
 const CategoryPage = () => {
   const { category } = useParams();
   const [items, setItems] = useState([]);
+  const [categoryObj, setCategoryObj] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -18,10 +18,10 @@ const CategoryPage = () => {
       setLoading(true);
 
       try {
-        const response = await axios.get(
+        const itemsResponse = await axios.get(
           `http://localhost:5000/api/categories/${category}`
         );
-        setItems(response.data);
+        setItems(itemsResponse.data);
       } catch (error) {
         setError(error.message || "Error loading category...");
       } finally {
@@ -41,21 +41,9 @@ const CategoryPage = () => {
 
       {/* Display Results */}
       <ul className="grid lg:grid-cols-5 gap-8 mt-12 md:grid-cols-3 sm:grid-cols-1">
-        {items.map((item) => (
-          <Card
-            key={item._id}
-            className="max-w-sm"
-            imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc={item.thumbnail_img}
-          >
-            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {item.name}
-            </h5>
-            <p className="font-normal text-gray-700 dark:text-gray-400">
-              {item.instructions}
-            </p>
-          </Card>
-        ))}
+        {items.map((item) => {
+          return <Card key={item._id} item={item}></Card>;
+        })}
       </ul>
     </div>
   );

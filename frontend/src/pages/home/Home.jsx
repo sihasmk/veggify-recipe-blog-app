@@ -1,6 +1,7 @@
 import React from "react";
 import Hero from "../../components/Hero";
 import CategoryWrapper from "./../../components/CategoryWrapper";
+import Card from "../../components/Card";
 
 const Home = () => {
   return (

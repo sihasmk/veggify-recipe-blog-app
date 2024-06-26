@@ -7,7 +7,54 @@ const getAllCategories = async (req, res) => {
   res.status(200).json(result);
 };
 
-const getCategory = async (req, res) => {
+const getCategoryItemsOrCategoryByMenuId = async (req, res) => {
+  const { parameter } = req.params;
+  if (
+    typeof parameter === "number" ||
+    (typeof parameter === "string" &&
+      parameter.trim() !== "" &&
+      !isNaN(parameter))
+  ) {
+    const menuid = parameter;
+    try {
+      const catagoryObject = await Category.findOne({ menuId: menuid });
+
+      if (!catagoryObject) {
+        return res
+          .status(404)
+          .json({ message: "Category not found", menuId: menuid });
+      }
+
+      res.status(200).json(catagoryObject);
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: `Error fetching category info for ${menuid}` });
+    }
+  } else {
+    const category = parameter;
+    try {
+      const categoryAsInDb =
+        category.charAt(0).toUpperCase() + category.slice(1);
+      const categoryData = await Category.findOne({ name: categoryAsInDb });
+
+      if (!categoryData) {
+        return res
+          .status(404)
+          .json({ message: "Category not found", category });
+      }
+
+      const items = await Item.find({ menuId: categoryData.menuId });
+      res.status(200).json(items);
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: "Error fetching category data", category });
+    }
+  }
+};
+
+const getItemsInCategory = async (req, res) => {
   const { category } = req.params;
   try {
     const categoryAsInDb = category.charAt(0).toUpperCase() + category.slice(1);
@@ -24,7 +71,26 @@ const getCategory = async (req, res) => {
   }
 };
 
+const getCategoryByMenuId = async (req, res) => {
+  const { menuid } = req.params;
+  try {
+    const catagoryObject = await Category.findOne({ menuId: menuid });
+
+    if (!catagoryObject) {
+      return res
+        .status(404)
+        .json({ message: "Category not found", menuId: menuid });
+    }
+
+    res.status(200).json(catagoryObject);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: `Error fetching category info for ${menuid}` });
+  }
+};
+
 module.exports = {
   getAllCategories,
-  getCategory,
+  getCategoryItemsOrCategoryByMenuId,
 };
