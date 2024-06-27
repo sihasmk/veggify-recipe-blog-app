@@ -92,7 +92,7 @@ const SearchResults = () => {
           <Spinner size="xl" />
         </div>
       ) : results.length > 0 ? (
-        <ul className="grid lg:grid-cols-5 gap-8 md:grid-cols-3 sm:grid-cols-1">
+        <ul className="grid lg:grid-cols-4 gap-8 md:grid-cols-3 sm:grid-cols-1">
           {results.map((result) => (
             <Card key={result._id} item={result} />
           ))}
