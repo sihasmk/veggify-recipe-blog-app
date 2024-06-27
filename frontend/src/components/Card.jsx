@@ -58,7 +58,7 @@ const Card = ({ item }) => {
 
   return (
     <div className="container relative mx-auto flex justify-center md:justify-start">
-      <div className="absolute top-4 right-4 z-10 py-1 px-2 bg-gray-300 rounded-lg">
+      <div className="absolute top-4 right-4 z-10 py-1 px-2 bg-gray-200 rounded-lg">
         {item?.more?.difficulty}
       </div>
       <div className="max-w-sm">
