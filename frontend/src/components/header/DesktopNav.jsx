@@ -18,12 +18,12 @@ const DesktopNav = ({ menuItems, logo }) => {
       {/* Login and Sign-up button */}
       <ul className="flex gap-7">
         <li>
-          <button className="text-secondary bg-btnColour border-none hover:bg-btnHover px-4 py-2 rounded font-semibold transition-all ease-in">
+          <button className="text-white bg-btnColour border-none hover:bg-btnHover px-4 py-2 rounded font-semibold transition-all ease-in">
             Login
           </button>
         </li>
         <li>
-          <button className="text-secondary bg-btnColour border-none hover:bg-btnHover px-4 py-2 rounded font-semibold transition-all ease-in">
+          <button className="text-white bg-btnColour border-none hover:bg-btnHover px-4 py-2 rounded font-semibold transition-all ease-in">
             Sign Up
           </button>
         </li>

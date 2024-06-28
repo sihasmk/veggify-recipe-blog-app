@@ -3,6 +3,11 @@ import Hero from "../../components/Hero";
 import CategoryWrapper from "./../../components/CategoryWrapper";
 import Card from "../../components/Card";
 import FeaturedSection from "./FeaturedSection";
+import LatestRecipes from "./LatestRecipes";
+import NewsLetter from "./NewsLetter";
+import AboutSection from "./AboutSection";
+import CompanyLogos from "./CompanyLogos";
+import Subscription from "./Subscription";
 
 const Home = () => {
   return (
@@ -12,6 +17,10 @@ const Home = () => {
         <CategoryWrapper />
       </div>
       <FeaturedSection />
+      <LatestRecipes />
+      <NewsLetter />
+      <AboutSection />
+      <CompanyLogos />
     </div>
   );
 };

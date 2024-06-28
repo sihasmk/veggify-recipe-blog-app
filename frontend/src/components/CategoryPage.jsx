@@ -40,7 +40,7 @@ const CategoryPage = () => {
       <CategoryWrapper />
 
       {/* Display Results */}
-      <ul className="grid lg:grid-cols-5 gap-8 mt-12 md:grid-cols-3 sm:grid-cols-1">
+      <ul className="grid lg:grid-cols-4 gap-8 mt-12 md:grid-cols-3 sm:grid-cols-1">
         {items.map((item) => {
           return <Card key={item._id} item={item}></Card>;
         })}

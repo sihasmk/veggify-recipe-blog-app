@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 // React Icons
 import { FaRegClock } from "react-icons/fa6";
 
+// Required functions
+import { calculateTotalTime } from "./../functions/calculateTotalTime";
+
 const Card = ({ item }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -48,20 +51,12 @@ const Card = ({ item }) => {
     );
   };
 
-  const calculateTotalTime = (item) => {
-    const prepTime = item.more.preptime;
-    const cookTime = item.more.cooktime;
-
-    const totalTime = parseInt(prepTime) + parseInt(cookTime);
-    return totalTime;
-  };
-
   return (
     <div className="container relative mx-auto flex justify-center md:justify-start">
       <div className="absolute top-4 right-4 z-10 py-1 px-2 bg-gray-200 rounded-lg">
         {item?.more?.difficulty}
       </div>
-      <div className="max-w-sm">
+      <div>
         <div className="bg-white relative shadow-lg hover:shadow-xl transition ease-in rounded-lg">
           <img src={item?.thumbnail_img} />
           <div className="py-6 px-5 rounded-lg bg-white">

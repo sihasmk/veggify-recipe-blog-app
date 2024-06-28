@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import ErrorPage from "../components/ErrorPage";
 import CategoryPage from "../components/CategoryPage";
 import SearchResults from "../pages/SearchResults";
+import RecipePage from "../pages/RecipePage";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchResults />,
+      },
+      {
+        path: "/items/:id",
+        element: <RecipePage />,
       },
     ],
   },

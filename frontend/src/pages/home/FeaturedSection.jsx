@@ -23,7 +23,7 @@ const FeaturedSection = () => {
           consequuntur et quia animi nam distinctio quisquam inventore, dolor ea
           accusamus.
         </p>
-        <button className="text-secondary bg-btnColour border-none hover:bg-btnHover px-4 py-2 rounded font-semibold transition ease-in">
+        <button className="text-white bg-btnColour border-none hover:bg-btnHover px-4 py-2 rounded font-semibold transition ease-in">
           View Recipe
         </button>
       </div>
