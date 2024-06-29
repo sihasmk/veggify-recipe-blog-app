@@ -3,7 +3,7 @@ const Category = require("../model/categoryModel");
 const Item = require("../model/ItemModel");
 
 const getAllCategories = async (req, res) => {
-  const result = await Category.find().sort({ createdAt: -1 });
+  const result = await Category.find().sort({ menuId: 1 });
   res.status(200).json(result);
 };
 
@@ -44,7 +44,12 @@ const getCategoryItemsOrCategoryByMenuId = async (req, res) => {
           .json({ message: "Category not found", category });
       }
 
-      const items = await Item.find({ menuId: categoryData.menuId });
+      let items;
+      if (categoryData.menuId !== 0) {
+        items = await Item.find({ menuId: categoryData.menuId });
+      } else {
+        items = await Item.find();
+      }
       res.status(200).json(items);
     } catch (error) {
       res

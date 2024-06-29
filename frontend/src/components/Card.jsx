@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+// Flowbite React Components
+import { Spinner } from "flowbite-react";
+
 // React Icons
 import { FaRegClock } from "react-icons/fa6";
 
@@ -33,7 +36,7 @@ const Card = ({ item }) => {
   }, []);
 
   const renderCategory = (menuId) => {
-    const categoryObj = categories[menuId - 1];
+    const categoryObj = categories[menuId];
     const categoryStyle = {
       backgroundColor: categoryObj?.bgColour,
       color: categoryObj?.textColour,
@@ -50,6 +53,14 @@ const Card = ({ item }) => {
       </button>
     );
   };
+
+  if (loading) {
+    return (
+      <div className="text-center">
+        <Spinner size="xl" />
+      </div>
+    );
+  }
 
   return (
     <div className="container relative mx-auto flex justify-center md:justify-start">

@@ -6,7 +6,7 @@ import logo from "/logo.svg";
 const Header = () => {
   const [hideLeft, setHideLeft] = useState("-left-[1000px]");
   const menuItems = [
-    { name: "Recipes", to: "/recipes" },
+    { name: "Recipes", to: "/categories/all" },
     { name: "Resources", to: "/resources" },
     { name: "About", to: "/about" },
     { name: "Contact Us", to: "/contact-us" },

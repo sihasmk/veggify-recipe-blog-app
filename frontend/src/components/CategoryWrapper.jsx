@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+// Flowbite React Components
+import { Spinner } from "flowbite-react";
+
 const CategoryWrapper = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -26,8 +29,16 @@ const CategoryWrapper = () => {
     fetchCategories();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="text-center">
+        <Spinner size="xl" />
+      </div>
+    );
+  }
+
   return (
-    <div className="flex gap-10">
+    <div className="flex gap-10 items-center justify-center">
       {categories.map((category) => {
         const style = {
           backgroundColor: category.bgColour,

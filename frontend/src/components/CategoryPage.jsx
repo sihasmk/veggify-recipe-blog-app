@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 
 import Card from "./Card";
 
+// Flowbite React Components
+import { Spinner } from "flowbite-react";
+
 import CategoryWrapper from "./CategoryWrapper";
 import axios from "axios";
 
@@ -18,9 +21,12 @@ const CategoryPage = () => {
       setLoading(true);
 
       try {
-        const itemsResponse = await axios.get(
+        let itemsResponse;
+
+        itemsResponse = await axios.get(
           `http://localhost:5000/api/categories/${category}`
         );
+
         setItems(itemsResponse.data);
       } catch (error) {
         setError(error.message || "Error loading category...");
@@ -32,10 +38,18 @@ const CategoryPage = () => {
     fetchCategoryData();
   }, [category]);
 
+  if (loading) {
+    return (
+      <div className="text-center">
+        <Spinner size="xl" />
+      </div>
+    );
+  }
+
   return (
     <div className="px-6 lg:px-12 flex flex-col items-center justify-center w-full py-20">
       <h1 className="text-center text-3xl text-secondary font-semibold py-10 sm:text-6xl sm:leading-relaxed">
-        {category.charAt(0).toUpperCase() + category.slice(1).toLowerCase()}
+        {category.charAt(0).toUpperCase() + category.slice(1)}
       </h1>
       <CategoryWrapper />
 

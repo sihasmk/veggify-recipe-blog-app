@@ -34,7 +34,7 @@ const LatestRecipes = () => {
         )}
       </div>
       <div className="sm:w-44 mx-auto mt-12">
-        <Link to="/recipes">
+        <Link to="/categories/all">
           <button className="text-white bg-btnColour border-none hover:bg-btnHover px-4 py-2 rounded font-semibold transition ease-in">
             View all Recipes
           </button>

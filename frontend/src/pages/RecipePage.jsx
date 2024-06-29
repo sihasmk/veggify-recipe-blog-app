@@ -1,17 +1,25 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import MyTable from "../components/MyTable";
 import { calculateTotalTime } from "../functions/calculateTotalTime";
 import { parseInstructions } from "../functions/parseInstructions";
 
+// Flowbite React Components
+import { Spinner } from "flowbite-react";
+
 const RecipePage = () => {
   const { id } = useParams();
+  const { pathname } = useLocation();
   const [recipe, setRecipe] = useState(null);
   const [totalTime, setTotalTime] = useState(null);
   const [instructions, setInstructions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -39,6 +47,14 @@ const RecipePage = () => {
       setInstructions(parseInstructions(recipe.instructions));
     }
   }, [recipe]);
+
+  if (loading) {
+    return (
+      <div className="text-center">
+        <Spinner size="xl" />
+      </div>
+    );
+  }
 
   return (
     <div className="my-16">
