@@ -10,6 +10,7 @@ import { FaRegClock } from "react-icons/fa6";
 
 // Required functions
 import { calculateTotalTime } from "./../functions/calculateTotalTime";
+import CardPlaceHolder from "./CardPlaceHolder";
 
 const Card = ({ item }) => {
   const [categories, setCategories] = useState([]);
@@ -55,11 +56,7 @@ const Card = ({ item }) => {
   };
 
   if (loading) {
-    return (
-      <div className="text-center">
-        <Spinner size="xl" />
-      </div>
-    );
+    return <CardPlaceHolder />;
   }
 
   return (
