@@ -3,7 +3,7 @@ import { Table } from "flowbite-react";
 
 const MyTable = ({ columnHeadings, rowEntries }) => {
   return (
-    <div className="overflow-x-auto">
+    <div className="md:max-w-[500px] max-w-[400px] xl:max-w-screen-md">
       <Table striped>
         <Table.Head>
           {columnHeadings.map((heading, index) => (

@@ -77,6 +77,14 @@ const ItemSchema = new Schema(
       type: moreSchema,
       required: true,
     },
+    category: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
   },
   { collection: "Items" }
 );

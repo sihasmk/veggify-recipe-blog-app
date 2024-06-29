@@ -40,70 +40,69 @@ const RecipePage = () => {
     }
   }, [recipe]);
 
-  console.log(recipe);
-
   return (
-    <div>
-      <div>
-        <img src={recipe?.thumbnail_img} alt="" />
+    <div className="my-16">
+      <div className="flex items-center justify-center mb-12">
+        <div>
+          <img src={recipe?.thumbnail_img} alt="" />
+        </div>
       </div>
       <div>
-        <h1 className="text-4xl font-bold ">{recipe?.name}</h1>
-        <p>
-          An easy and quick dish, perfect for any meal. This classis omelette
-          combines beaten eggs cooked to perfection, optionally filled with your
-          choice of cheese, vegetables or meats.
-        </p>
-        <div>
-          <h3>Preparation Time</h3>
-          <ul>
+        <h1 className="text-4xl font-bold mb-4">{recipe?.name}</h1>
+        <p>{recipe?.description}</p>
+        <div className="mt-6 px-6">
+          <h3 className="font-bold text-xl mb-3">Preparation Time</h3>
+          <ul className="list-disc list-inside">
             <li>
-              <span className="font-bold">Total:</span> {totalTime} minutes
+              &ensp;
+              <span className="font-semibold">Total:</span>&nbsp; {totalTime}{" "}
+              minutes
             </li>
             <li>
-              <span className="font-bold">Preparation:</span>{" "}
-              {recipe?.more?.preptime} minutes
+              &ensp;
+              <span className="font-bold">Preparation:</span>&nbsp;
+              {recipe?.more?.preptime}
             </li>
             <li>
-              <span className="font-bold">Cooking:</span>{" "}
-              {recipe?.more?.cooktime} minutes
+              &ensp;
+              <span className="font-bold">Cooking:</span>&nbsp;
+              {recipe?.more?.cooktime}
             </li>
           </ul>
         </div>
       </div>
-      <div>
-        <h2 className="text-3xl font-semibold">Ingredients</h2>
-        <ul>
+      <div className="mt-8">
+        <h2 className="text-3xl mb-4 font-semibold">Ingredients</h2>
+        <ul className="list-disc list-inside">
           {recipe?.ingredients?.map((ingredient) => (
             <li key={ingredient?._id}>
+              &ensp;
               {ingredient?.name}: {ingredient?.quantity}
             </li>
           ))}
         </ul>
       </div>
-      <div>
-        <h2 className="text-3xl font-semibold">Instructions</h2>
-        {instructions.map((instruction) => (
-          <p className="font-bold">{instruction}</p>
+      <div className="mt-8">
+        <h2 className="text-3xl mb-4 font-semibold">Instructions</h2>
+        {instructions.map((instruction, index) => (
+          <p key={index}>
+            <span className="font-bold">{instruction.slice(0, 2)}</span>
+            &emsp;
+            {instruction.slice(2, instruction.length)}
+          </p>
         ))}
       </div>
-      <div>
-        <h2 className="text-3xl font-semibold">Nutrition</h2>
-        <p>
-          The table below shows nutritional values per serving without the
-          additional fillings
-        </p>
-        <div className="">
-          <MyTable
-            columnHeadings={["Nutritional Content", "Amount"]}
-            rowEntries={[
-              ["Calories", "277kcal"],
-              ["Carbohydrates", "10g"],
-              ["Protein", "20g"],
-              ["Fat", "22g"],
-            ]}
-          />
-        </div>
+      <div className="mt-8">
+        <h2 className="text-3xl mb-4 font-semibold">Nutrition</h2>
+        <MyTable
+          columnHeadings={["Nutritional Content", "Amount"]}
+          rowEntries={[
+            ["Calories", "277kcal"],
+            ["Carbohydrates", "10g"],
+            ["Protein", "20g"],
+            ["Fat", "22g"],
+          ]}
+        />
       </div>
     </div>
   );
