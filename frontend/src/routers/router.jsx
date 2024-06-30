@@ -7,6 +7,7 @@ import SearchResults from "../pages/SearchResults";
 import RecipePage from "../pages/RecipePage";
 import Resources from "../pages/Resources";
 import About from "../pages/About";
+import Contact from "../pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/contact-us",
+        element: <Contact />,
       },
     ],
   },

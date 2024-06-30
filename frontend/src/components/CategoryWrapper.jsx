@@ -38,7 +38,7 @@ const CategoryWrapper = () => {
   }
 
   return (
-    <div className="flex gap-10 items-center justify-center">
+    <div className="flex flex-wrap gap-10 items-center justify-center">
       {categories.map((category) => {
         const style = {
           backgroundColor: category.bgColour,

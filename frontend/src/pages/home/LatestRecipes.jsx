@@ -33,7 +33,7 @@ const LatestRecipes = () => {
           </h1>
         )}
       </div>
-      <div className="sm:w-44 mx-auto mt-12">
+      <div className="sm:w-44 mx-auto mt-12 items-center">
         <Link to="/categories/all">
           <button className="text-white bg-btnColour border-none hover:bg-btnHover px-4 py-2 rounded font-semibold transition ease-in">
             View all Recipes
